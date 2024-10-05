@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg3hylang5fxn"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_j0gfq"]
+[ext_resource type="Script" path="res://android_battery_plugin.gd" id="2_pot3o"]
+
+[node name="Main" type="Node2D" node_paths=PackedStringArray("log_label", "battery_level_label", "battery_state_label", "android_plugin")]
+script = ExtResource("1_j0gfq")
+log_label = NodePath("LogLabel")
+battery_level_label = NodePath("BatteryLevelLabel")
+battery_state_label = NodePath("BatteryStateLabel")
+android_plugin = NodePath("AndroidGeolocationPlugin")
+
+[node name="PingButton" type="Button" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 52.0
+offset_top = 172.0
+offset_right = 332.0
+offset_bottom = 234.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Ping"
+
+[node name="LogLabel" type="Label" parent="."]
+offset_left = 533.0
+offset_top = 57.0
+offset_right = 966.0
+offset_bottom = 169.0
+theme_override_font_sizes/font_size = 30
+text = "Hello"
+
+[node name="BatteryLevelLabel" type="Label" parent="."]
+offset_left = 533.0
+offset_top = 155.0
+offset_right = 966.0
+offset_bottom = 267.0
+theme_override_font_sizes/font_size = 30
+text = "Battery Level: -1"
+
+[node name="BatteryStateLabel" type="Label" parent="."]
+offset_left = 535.0
+offset_top = 297.0
+offset_right = 968.0
+offset_bottom = 409.0
+theme_override_font_sizes/font_size = 30
+text = "Battery State: Unknown"
+
+[node name="AndroidGeolocationPlugin" type="Node" parent="."]
+script = ExtResource("2_pot3o")
+
+[connection signal="pressed" from="PingButton" to="." method="_on_Button_pressed"]
